@@ -1,0 +1,10 @@
+{
+  "name": "component-library",
+  "version": "1.0.0",
+  "description": "My classy component lib project",
+  "author": "Devin McBeth",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
