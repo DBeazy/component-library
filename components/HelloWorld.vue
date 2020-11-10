@@ -65,12 +65,19 @@
         >
       </li>
     </ul>
+    <h3>Buttons</h3>
+    <my-button label="Button" />
+    <my-button label="Primary" type="primary" />
+    <my-button label="Info" type="info" />
   </div>
 </template>
 
 <script>
+import MyButton from './Button';
+
 export default {
   name: 'HelloWorld',
+  components: { MyButton },
   props: {
     msg: String
   }

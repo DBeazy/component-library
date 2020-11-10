@@ -1,10 +1,8 @@
 <template>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }}</button>
+  <button type="button" :class="classes" @click="onClick">{{ label }}</button>
 </template>
 
 <script>
-import '../assets/css/button.css';
-
 export default {
   name: 'my-button',
 
@@ -13,34 +11,55 @@ export default {
       type: String,
       required: true
     },
-    primary: {
-      type: Boolean,
-      default: false
+    type: {
+      type: String,
+      default: '',
+      validator: function(value) {
+        return (
+          ['', 'primary', 'link', 'info', 'success', 'warning', 'danger'].indexOf(value) !== -1
+        );
+      }
     },
     size: {
       type: String,
-      default: 'medium',
+      default: 'normal',
       validator: function(value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
+        return ['small', 'normal', 'medium', 'large'].indexOf(value) !== -1;
       }
     },
-    backgroundColor: {
-      type: String
+    light: {
+      type: Boolean,
+      default: false
+    },
+    fullwidth: {
+      type: Boolean,
+      default: false
+    },
+    outlined: {
+      type: Boolean,
+      default: false
+    },
+    inverted: {
+      type: Boolean,
+      default: false
+    },
+    rounded: {
+      type: Boolean,
+      default: false
     }
   },
 
   computed: {
     classes() {
       return {
-        'storybook-button': true,
-        'storybook-button--primary': this.primary,
-        'storybook-button--secondary': !this.primary,
-        [`storybook-button--${this.size}`]: true
-      };
-    },
-    style() {
-      return {
-        backgroundColor: this.backgroundColor
+        button: true,
+        [`is-${this.type}`]: this.type !== '',
+        [`is-${this.size}`]: this.size !== 'normal',
+        'is-light': this.light,
+        'is-fullwidth': this.fullwidth,
+        'is-outlined': this.outlined,
+        'is-inverted': this.inverted,
+        'is-rounded': this.rounded
       };
     }
   },
@@ -52,3 +71,8 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import '~bulma/sass/utilities/_all.sass';
+@import '~bulma/sass/elements/button.sass';
+</style>
