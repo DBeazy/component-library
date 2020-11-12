@@ -1,22 +1,30 @@
 <template>
-  <button type="button" :class="classes" @click="onClick">{{ label }}</button>
+  <button type="button" :class="classes" @click="onClick">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
-  name: 'my-button',
+  name: 'base-button',
 
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     type: {
       type: String,
-      default: '',
+      default: 'default',
       validator: function(value) {
         return (
-          ['', 'primary', 'link', 'info', 'success', 'warning', 'danger'].indexOf(value) !== -1
+          [
+            'default',
+            'white',
+            'black',
+            'primary',
+            'link',
+            'info',
+            'success',
+            'warning',
+            'danger'
+          ].indexOf(value) !== -1
         );
       }
     },
@@ -46,6 +54,26 @@ export default {
     rounded: {
       type: Boolean,
       default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    focused: {
+      type: Boolean,
+      default: false
+    },
+    hovered: {
+      type: Boolean,
+      default: false
+    },
+    active: {
+      type: Boolean,
+      default: false
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -53,13 +81,18 @@ export default {
     classes() {
       return {
         button: true,
-        [`is-${this.type}`]: this.type !== '',
+        [`is-${this.type}`]: this.type !== 'default',
         [`is-${this.size}`]: this.size !== 'normal',
         'is-light': this.light,
         'is-fullwidth': this.fullwidth,
         'is-outlined': this.outlined,
         'is-inverted': this.inverted,
-        'is-rounded': this.rounded
+        'is-rounded': this.rounded,
+        'is-loading': this.loading,
+        'is-focused': this.focused,
+        'is-hovered': this.hovered,
+        'is-active': this.active,
+        'is-selected': this.selected
       };
     }
   },

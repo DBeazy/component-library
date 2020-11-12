@@ -39,11 +39,11 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <template v-if="user">
-              <my-button size="small" @onClick="onLogout" label="Log out" />
+              <base-button size="small" @onClick="onLogout" label="Log out" />
             </template>
             <template v-if="!user">
-              <my-button size="small" @onClick="onLogin" label="Log in" />
-              <my-button size="small" @onClick="onCreateAccount" label="Sign up" type="primary" />
+              <base-button size="small" @onClick="onLogin" label="Log in" />
+              <base-button size="small" @onClick="onCreateAccount" label="Sign up" type="primary" />
             </template>
           </div>
         </div>
@@ -53,12 +53,12 @@
 </template>
 
 <script>
-import MyButton from './Button.vue';
+import BaseButton from './BaseButton.vue';
 
 export default {
   name: 'my-header',
 
-  components: { MyButton },
+  components: { BaseButton },
 
   props: {
     user: {

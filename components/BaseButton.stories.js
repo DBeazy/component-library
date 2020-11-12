@@ -1,99 +1,116 @@
-import MyButton from './Button.vue';
+import BaseButton from './BaseButton.vue';
 
 export default {
-  title: 'Example/Button',
-  component: MyButton,
+  title: 'Components/Base/Button',
+  component: BaseButton,
   argTypes: {
-    label: { control: 'text' },
     type: {
       control: {
         type: 'select',
-        options: ['', 'primary', 'link', 'info', 'success', 'warning', 'danger']
+        options: [
+          'default',
+          'white',
+          'black',
+          'primary',
+          'link',
+          'info',
+          'success',
+          'warning',
+          'danger'
+        ]
       }
     },
     size: { control: { type: 'select', options: ['small', 'normal', 'medium', 'large'] } }
+  },
+  parameters: {
+    jest: ['BaseButton.test.js']
   }
 };
 
 const Template = (args, { argTypes }) => ({
+  components: { BaseButton },
   props: Object.keys(argTypes),
-  components: { MyButton },
-  template: '<my-button @onClick="onClick" v-bind="$props" />'
+  template: '<base-button @onClick="onClick" v-bind="$props">Button</base-button>'
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  label: 'Button'
+
+export const White = Template.bind({});
+White.args = {
+  type: 'white'
+};
+
+export const Black = Template.bind({});
+Black.args = {
+  type: 'black'
 };
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Button',
   type: 'primary'
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  type: 'link'
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  type: 'info'
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  label: 'Button',
   type: 'success'
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  label: 'Button',
   type: 'warning'
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  label: 'Button',
   type: 'danger'
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  label: 'Button',
   size: 'large'
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
-  label: 'Button',
   size: 'medium'
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  label: 'Button',
   size: 'small'
 };
 
 export const Light = Template.bind({});
 Light.args = {
-  label: 'Button',
   light: true
 };
 
 export const Fullwidth = Template.bind({});
 Fullwidth.args = {
-  label: 'Button',
   fullwidth: true
 };
 
 export const Oulined = Template.bind({});
 Oulined.args = {
-  label: 'Button',
-  outlined: true
+  oulined: true
 };
 
 export const Inverted = Template.bind({});
 Inverted.args = {
-  label: 'Button',
   inverted: true
 };
 
 export const Rounded = Template.bind({});
 Rounded.args = {
-  label: 'Button',
   rounded: true
 };

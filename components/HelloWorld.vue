@@ -66,18 +66,18 @@
       </li>
     </ul>
     <h3>Buttons</h3>
-    <my-button label="Button" />
-    <my-button label="Primary" type="primary" />
-    <my-button label="Info" type="info" />
+    <base-button label="Button" />
+    <base-button label="Primary" type="primary" />
+    <base-button label="Info" type="info" />
   </div>
 </template>
 
 <script>
-import MyButton from './Button';
+import BaseButton from './BaseButton';
 
 export default {
   name: 'HelloWorld',
-  components: { MyButton },
+  components: { BaseButton },
   props: {
     msg: String
   }
